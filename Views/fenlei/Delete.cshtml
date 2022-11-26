@@ -1,0 +1,43 @@
+﻿@model duandian_test.Models.fenlei
+
+@{
+    ViewBag.Title = "Delete";
+}
+<div style="padding-bottom:5px;padding-left:20px;">
+    当前位置：|&gt;基本设置  &gt;分类设置  &gt; 删除分类
+    <br />
+</div>
+
+<div class="form-horizontal" style="padding:0px 20px;">
+    <div class="form-group">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <h3>您确定要删除这条记录吗？</h3>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-1"></div>
+        @Html.LabelFor(model => model.shiyongfenlei, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-6">
+            @Html.TextBoxFor(model => model.shiyongfenlei, new { @class = "form-control", @readonly = "readonly" })
+            @Html.ValidationMessageFor(model => model.shiyongfenlei, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group   has-error">
+        <div class="col-md-3"></div>
+        <div class="col-md-4">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-actions no-color">
+                    <button type="submit" class="btn btn-primary">删 除</button>
+                    <button type="button" class="btn btn-primary" onclick="window.location.href = '@Url.Action("Index", "fenlei")'">返 回</button>
+                </div>
+            }
+        </div>
+        <div class="col-md-5"></div>
+    </div>
+</div>

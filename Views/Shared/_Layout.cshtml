@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>眼科医院资产管理系统</title>
+    @Styles.Render("~/Content/bootstrap.css")
+
+    @Scripts.Render("~/bundles/modernizr")
+
+    @using Microsoft.AspNet.Identity;
+
+    @{
+        string username = User.Identity.GetUserName();
+    }
+</head>
+<body>
+    <div class="navbar navbar-inverse" style="background-color: #022a50;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+                    <span class="sr-only">切换导航</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="./#" class="navbar-brand navbar-left">
+                    <img src="~/Content/image/logo.png" height="25">
+                </a>
+                <span class="navbar-brand navbar-left">眼科医院资产管理系统&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            </div>
+
+            <nav class="collapse navbar-collapse bs-navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="/home/Index">资产查询</a></li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            基本设置<b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/account/index">用户设置</a></li>
+                            <li><a href="/fenlei/index">分类设置</a></li>
+                            <li><a href="/keshi/index">科室设置</a></li>
+                            <li><a href="/danwei/index">单位设置</a></li>                            
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            信息录入<b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">                            
+                            <li><a href="/home/excelImport?username=@username">资产批量录入</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </nav>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p style="text-align:center;">&copy; @DateTime.Now.Year - 眼科医院  资产管理系统</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)    
+</body>
+</html>

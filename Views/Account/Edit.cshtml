@@ -1,0 +1,143 @@
+﻿@model duandian_test.Models.EditUserViewModel
+
+@{
+    ViewBag.Title = "资料者资料编辑";
+}
+
+
+<div style="padding-bottom:5px">
+    当前位置：| &gt;参数设置  &gt; 用户管理 &gt; 编辑用户资料
+    <br />
+
+</div>
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+       
+        <div class="form-group">
+            <div class="col-md-5"></div>
+
+            <div class="col-md-2">
+                <h3>修改原有账户资料</h3>
+            </div>
+            <div class="col-md-5"></div>
+        </div>
+
+        <hr />
+        @Html.ValidationSummary(true)
+
+
+        <div class="form-group">
+            <div class="col-md-1"></div>
+            @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                @Html.TextBoxFor(model => model.UserName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-1">
+            </div>
+            @Html.LabelFor(m => m.role, new { @class = "col-md-2 control-label" })
+            <div class="col-md-6">
+                <select name="role" class="form-control">
+                    <option>@Model.role</option>
+                    <option>分账号</option>
+                    <option>管理员账号</option>
+                </select>
+            </div>
+            <div class="col-md-5">
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <div class="col-md-1"></div>
+            @Html.LabelFor(model => model.keshi, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                <select name="keshi" class="form-control">
+                    <option>@Model.keshi</option>
+                    <option>全部</option>
+                    <option>门诊部</option>
+                    <option>国贸门诊</option>
+
+                    <option>一病区</option>
+                    <option>二病区</option>
+                    <option>三病区</option>
+                    <option>四病区</option>
+
+                    <option>手术室</option>
+                    <option>多功能实验室</option>
+                    <option>验光室</option>
+
+                    <option>医技科</option>
+                    <option>检验科</option>
+                    <option>药剂科</option>
+                    <option>财务科</option>
+                    <option>整形科</option>
+                    <option>医务科</option>
+                    <option>信息病案科</option>
+                    <option>总务科</option>
+                    <option>人事科</option>
+
+                    <option>准分子</option>
+                    <option>护理部</option>
+
+                    <option>医保办</option>
+                    <option>防盲办</option>
+                    <option>党政办</option>
+                    <option>钟院办</option>
+                    <option>陈院办</option>
+                    <option>曾院办</option>
+                    <option>书记办</option>
+
+                </select>
+                @Html.ValidationMessageFor(model => model.keshi, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-5">
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="form-group">
+            <div class="col-md-1"></div>
+            <div class="col-md-offset-2 col-md-6">
+                <input type="submit" value="保存" class="btn btn-default" />
+                <button type="button" class="btn btn-primary" onclick="window.location.href = '@Url.Action("Index", "Account")'">返 回</button>
+            </div>
+            @*<div class="col-md-6"></div>*@
+        </div>
+
+
+
+
+
+
+    </div>
+}
+
+<div>
+    @Html.ActionLink("回到使用者清单页面", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

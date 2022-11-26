@@ -1,0 +1,284 @@
+﻿@model duandian_test.Models.shebei
+
+@{
+    ViewBag.Title = "Edit";
+    string username = ViewBag.username;
+}
+<link href="~/Content/datepicker.css" rel="stylesheet" media="screen">
+<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+<div style="padding-bottom:5px;padding-left:20px;">
+    当前位置：| &gt;资产查询  &gt; 资产信息编辑
+    <br />
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal" style="padding:0px 20px;">
+
+        <div class="form-group">
+            <div class="col-md-5"></div>
+            <div class="col-md-2">
+                <h3>资产信息编辑</h3>
+            </div>
+            <div class="col-md-5"></div>
+        </div>
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <input type="hidden" name="zhuangtai_input" value=@ViewBag.zhuangtai />
+        <input type="hidden" name="searchzhi" value=@ViewBag.searchzhi />
+        <input type="hidden" name="shenhejieguozhi" value=@ViewBag.shenhejieguozhi />
+        <input type="hidden" name="sortOrderzhi" value=@ViewBag.sortOrderzhi />
+
+        <div class="form-group" hidden>
+            <input name="username" value="@username" />
+        </div>
+
+        <div class="form-group" hidden>
+            <div class="col-md-1"></div>
+            @Html.LabelFor(model => model.xuhao, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                @Html.TextBoxFor(model => model.xuhao, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.xuhao, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-1"></div>
+            @Html.LabelFor(model => model.bianhao, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                @Html.TextBoxFor(model => model.bianhao, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.bianhao, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-1"></div>
+            @Html.LabelFor(model => model.shiyongshebei, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                @Html.TextBoxFor(model => model.shiyongshebei, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.shiyongshebei, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-1"></div>
+            @Html.LabelFor(model => model.guigexinghao, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                @Html.TextBoxFor(model => model.guigexinghao, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.guigexinghao, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-1"></div>
+            @Html.LabelFor(model => model.danwei, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-6">                
+                <select name="danwei" id="danwei" class="form-control" required>
+                    <option>@Model.danwei</option>
+                    @foreach (var item in ViewBag.danwei)
+                    {
+                        <option value="@item">@item</option>
+                    }
+                </select>
+                @Html.ValidationMessageFor(model => model.danwei, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-1"></div>
+            @Html.LabelFor(model => model.shuliang, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                @Html.TextBoxFor(model => model.shuliang, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.shuliang, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-1"></div>
+            @Html.LabelFor(model => model.jiage, new { @class = "control-label col-md-2" })
+            <div class="col-md-6 ">
+                <div class="input-group">
+                    @Html.TextBoxFor(model => model.jiage, new { @class = "form-control" })
+                    <span class="input-group-addon">元</span>
+                </div>
+                @Html.ValidationMessageFor(model => model.jiage, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-1"></div>
+            @Html.LabelFor(model => model.fapiao, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                @Html.TextBoxFor(model => model.fapiao, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.fapiao, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-1"></div>
+            @Html.LabelFor(model => model.changjia, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                @Html.TextBoxFor(model => model.changjia, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.changjia, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-1"></div>
+            @Html.LabelFor(model => model.xiaoshoushang, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                @Html.TextBoxFor(model => model.xiaoshoushang, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.xiaoshoushang, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group ">
+            <div class="col-md-1"></div>
+            <div class="control-label col-md-2">
+                @Html.LabelFor(model => model.shiyongshijian)
+            </div>
+            <div class="input-group date form_date col-md-6 " data-date="" data-date-format="yyyy-mm-dd" style="padding-left:15px;">
+                @Html.TextBoxFor(model => model.shiyongshijian, new { @class = "form-control" })
+
+                <span class="input-group-btn"><button class="btn btn-default" type="button"><i class="glyphicon glyphicon-th"></i></button></span>
+                @Html.ValidationMessageFor(model => model.shiyongshijian, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-1"></div>
+            @Html.LabelFor(model => model.fangzhididian, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                @Html.TextBoxFor(model => model.fangzhididian, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.fangzhididian, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-1"></div>
+            @Html.LabelFor(model => model.fenlei, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-6">                
+                <select name="fenlei" id="fenlei" class="form-control" required>
+                    <option>@Model.fenlei</option>
+                    @foreach (var item in ViewBag.fenlei)
+                    {
+                        <option value="@item">@item</option>
+                    }
+                </select>
+                @Html.ValidationMessageFor(model => model.fenlei, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-1"></div>
+            @Html.LabelFor(model => model.zhuangtai, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                <select name="zhuangtai" class="form-control">
+                    <option>@Model.zhuangtai</option>
+                    <option>在用</option>
+                    <option>报废</option>
+                </select>
+                @Html.ValidationMessageFor(model => model.zhuangtai, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-1"></div>
+            @Html.LabelFor(model => model.diaopei, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                @Html.TextBoxFor(model => model.diaopei, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.diaopei, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-1"></div>
+            @Html.LabelFor(model => model.fuzerendianhua, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                @Html.TextBoxFor(model => model.fuzerendianhua, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.fuzerendianhua, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-1"></div>
+            @Html.LabelFor(model => model.gongchengshidianhua, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                @Html.TextBoxFor(model => model.gongchengshidianhua, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.gongchengshidianhua, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group" hidden>
+            <div class="col-md-1"></div>
+            @Html.LabelFor(model => model.lururiqi, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                @Html.TextBoxFor(model => model.lururiqi, new { @class = "form-control", @readonly = "readonly" })
+                @Html.ValidationMessageFor(model => model.lururiqi, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-1"></div>
+            @Html.LabelFor(model => model.keshi, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                
+                <select name="keshi" id="keshi" class="form-control" required oninvalid="setCustomValidity('必须填写！');" onselect="setCustomValidity('');">
+                    <option>@Model.keshi</option>
+                    @foreach (var item in ViewBag.keshi)
+                    {
+                        <option value="@item">@item</option>
+                    }
+                </select>
+
+                @Html.ValidationMessageFor(model => model.keshi, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-1"></div>
+            @Html.LabelFor(model => model.beizhu, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                <textarea name="beizhu" class="form-control" rows="3">@Model.beizhu</textarea>
+                @Html.ValidationMessageFor(model => model.beizhu, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-1"></div>
+            <div class="col-md-offset-2 col-md-6">
+                <input type="submit" value="保存" class="btn btn-default" />
+                <button type="button" class="btn btn-primary" onclick="window.location.href = '@Url.Action("Index", "Home", new { sortOrder = @ViewBag.sortOrderzhi, searchString = @ViewBag.searchzhi, zhuangtai = @ViewBag.zhuangtai, shenhejieguo = @ViewBag.shenhejieguozhi })'">返 回</button>                
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<script type="text/javascript" src="~/Scripts/jquery-1.10.2.js" charset="UTF-8"></script>
+<script type="text/javascript" src="~/Content/bootstrap-datepicker.js" charset="UTF-8"></script>
+<script type="text/javascript" src="~/Content/bootstrap-datepicker.zh-CN.js" charset="UTF-8"></script>
+<script type="text/javascript">
+
+    $('.form_date').datepicker({
+        todayBtn: "linked",
+        language: "zh-CN",
+        orientation: "bottom auto",
+        autoclose: true,
+        todayHighlight: true
+    });
+    
+</script>
+
+
+
+
+
+
+

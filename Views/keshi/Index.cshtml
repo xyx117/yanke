@@ -1,0 +1,70 @@
+﻿@model IEnumerable<duandian_test.Models.keshi>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div style="padding-bottom:5px;padding-left:20px;">
+    <div style="padding-bottom:5px;">
+        当前位置：| &gt;基本设置 &gt;科室设置 &nbsp;&nbsp;&nbsp;  @Html.ActionLink("新增科室", "create")
+        <br />
+    </div>
+</div>
+
+<table class="table table-striped table-hover" id="test" style="padding-left:20px;">
+    <thead>
+        <tr style="background-color:#e0cc5f">
+            <th nowrap>         
+            </th>
+
+            <th nowrap>
+            </th>
+
+            <th nowrap>
+
+                序号
+            </th>
+
+            <th nowrap>
+
+                科室
+            </th>
+
+            <th nowrap>
+            </th>
+        </tr>
+
+    </thead>
+    <tbody>
+        @{
+            int hao = 1;
+        }
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>                 
+                </td>
+
+                <td>                  
+                </td>
+                <td>
+
+                    @hao
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.shiyongkeshi)
+                </td>
+                <td>
+                    @Html.ActionLink("编辑", "Edit", new { xuhao = item.xuhao })
+
+                    @Html.ActionLink("刪除", "Delete", new { xuhao = item.xuhao })
+
+                </td>
+            </tr>
+            hao = hao + 1;
+        }
+    </tbody>
+</table>
+
+
+

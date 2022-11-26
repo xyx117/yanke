@@ -1,0 +1,51 @@
+﻿@model IEnumerable<duandian_test.Models.EditUserViewModel>
+@{
+    ViewBag.Title = "账号管理";
+}
+<div style="padding-bottom:5px;padding-left:20px;">
+    当前位置：| &gt;参数设置  &gt; 用户管理
+    <br />
+</div>
+<div style="padding-bottom:5px;padding-left:20px;">
+    <p>
+        @Html.ActionLink("新增账号", "Register")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.role)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.keshi)
+            </th>         
+            <th></th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.role)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.keshi)
+                </td>
+                <td>
+                    @Html.ActionLink("编辑", "Edit", new { id = item.UserName })
+
+                    @if (@item.UserName != "admin")
+                    {
+                        @Html.ActionLink("刪除", "Delete", new { id = item.UserName })
+                    }
+                </td>
+            </tr>
+        }
+    </table>
+</div>
